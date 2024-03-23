@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        window.onload = function (){
+
+            let room = prompt('방 이름을 입력하세요', '');
+            let socket = io.connect();
+
+            socket.emit('join', room);
+            socket.on('message1', function(data){
+                alert(data);
+//                $(`<p>${data}</p>`).appendTo('body');
+            });
+
+            document.getElementById('button').onclick = function(){
+               
+                socket.emit('message', 'test');
+            }
+        };
+    </script>
+</head>
+<body>
+    <button id="button">EMIT</button>
+</body>
+</html>
