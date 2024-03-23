@@ -13,9 +13,8 @@
             let socket = io.connect();
 
             socket.emit('join', room);
-            socket.on('message1', function(data){
-                alert(data);
-//                $(`<p>${data}</p>`).appendTo('body');
+            socket.on('message', function(data){
+               $(`<p>${data}</p>`).appendTo('body');
             });
 
             document.getElementById('button').onclick = function(){

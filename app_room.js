@@ -41,9 +41,7 @@ io.sockets.on('connection', (socket) => {
 
     //message 이벤트
     socket.on('message', (data) => {
-        // console.log('방이름!!!!!!!!', roomName);
-        // io.sockets.in(roomName).emit('message1', 'test socket');
-        socket.broadcast.emit('message1', data);
+        io.sockets.in(roomName).emit('message', 'test socket');
     });
 });
 
